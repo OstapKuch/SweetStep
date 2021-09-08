@@ -1,0 +1,23 @@
+
+
+$theme-colors: (
+    "primary": #FBB1BD,
+    "secondary": #ff0000
+    );
+
+.btn {
+    color: #fff !important; 
+}
+
+.bg-pink {
+    background-color: #F7CAD0;
+}
+
+.shopping-bag-icon {
+    height: 1.2em;
+    width: auto;
+}
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
