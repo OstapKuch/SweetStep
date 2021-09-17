@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="cart" id="cart"
+     style="height: 70px; width: 70px; background-color: blueviolet; position: fixed; top: 50px; right: 30px; visibility: hidden">
+    <p id="cart_items_count"></p>
+    <button onclick="console.log('click but')">Cart</button>
+</div>
+{% for product in products %}
+    <div class="product" style="background-color: aquamarine">
+        <h2 class="product-title">
+            {{ product.title }}
+        </h2>
+        {% for image in images %}
+            {% if image.product_id_id == product.id %}
+                <img class="room-img" src="{{ image.image.url }}" style="max-height: 200px;">
+            {% endif %}
+        {% endfor %}
+
+        <h2 class="product-description">
+            {{ product.description }}
+        </h2>
+        <h2 class="product-price">
+            {{ product.price }}
+        </h2>
+        <button id="product_{{ product.id }}" onclick="AddItemToCart(this.id, 1)">Add to cart</button>
+    </div>
+{% endfor %}
+<div class="contact-us" style="background-color: bisque; height: 350px; padding-top: 50px;">
+    <form action="{% url 'contact_us' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Ім'я" value="">
+        <input type="tel" name="phone_number" placeholder="Номер" value="">
+        <input type="email" name="email" placeholder="Пошта" value="">
+        <button type="submit">Contact us</button>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</html>

@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <title>Sweet Step</title>
+</head>
+<body>
+
+<!-- ---------- Cart ------------ -->
+
+<div class="cart" id="cart"
+     style="height: 70px; width: 70px; background-color: blueviolet; position: fixed; top: 50px; right: 30px; visibility: hidden">
+    <p id="cart_items_count"></p>
+    <button onclick="console.log('click but')">Cart</button>
+</div>
+
+<!-- ---------- Navbar ---------- -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            Logo
+            <!-- <img class="" src="images/icons/logo.svg" alt="Logo"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Про нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Товари</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Як замовити</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Оплата</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Відправлення</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Співпраця</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <span>
+              <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
+            </span>
+        </div>
+    </div>
+</nav>
+
+<!-- ---------- About us section ---------- -->
+<section class="has-divider bg-primary">
+    <div class="container">
+        <div class="row py-5 align-self-center">
+            <div class="col">
+                <img src="{% static 'images/hero-image.png' %}" class="rounded img-fluid float-start" alt="">
+            </div>
+            <div class="col">
+                <h3 class="h2 pink-text">Про нашу компанію</h3>
+                <p class="fs-6 pink-text">Sweet Step – Український виробник чурчхели зі смаками світових брендів, у нас
+                    Ви зможете знайти єдину в Україні чурчхелу зі смаком Coca Cola, Fanta, Sprite та багато інших
+                    новинок, при тому, ми не відходимо від справжніх рецептур якісного та смачного грузинського
+                    продукту, а також пропонуємо класичні смаки, які не поступаються новинкам. Наша головна мета -
+                    здивувати Вас якісним продуктом і новими смаками, які до того Ви точно не коштували у чурчхелі та
+                    надати цьому продукту нове дихання. Наш продукт це не тільки смачно, а ще й зручно, адже через
+                    зручне упакування Ви можете ласувати його у будь-якому місці.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Goods -->
+<!-- TODO: Add shopping cart icon, fix price style -->
+<div class="container py-5">
+    <div class="row">
+        {% for product in products %}
+            <div class="col">
+                <div class="card">
+                    {% for image in images %}
+                        {% if image.product_id_id == product.id %}
+                            {#<img class="room-img" src="{{ image.image.url }}" style="max-height: 200px;">#}
+                            <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">
+                        {% endif %}
+                    {% endfor %}
+                    <div class="card-body">
+                        <p class="fs-5">{{ product.title }}</p>
+                        <p class="card-text">
+                            {{ product.description }}
+{#                            Some quick example text to build on the card title and make up the bulk of#}
+{#                            the#}
+{#                            card's content.#}
+                        </p>
+                        <p class="card-text">  {{ product.price }} </p>
+                        <button class="btn btn-primary" id="product_{{ product.id }}" onclick="AddItemToCart(this.id, 1)">Купити</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {#        <div class="col">#}
+        {#            <div class="card">#}
+        {#                <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">#}
+        {#                <div class="card-body">#}
+        {#                    <p class="fs-5">text</p>#}
+        {#                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the#}
+        {#                        card's content.</p>#}
+        {#                    <button class="btn btn-primary">Купити</button>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="col">#}
+        {#            <div class="card">#}
+        {#                <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">#}
+        {#                <div class="card-body">#}
+        {#                    <p class="fs-5">text</p>#}
+        {#                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the#}
+        {#                        card's content.</p>#}
+        {#                    <!-- <p href="" class="fs-5">300 грн</p> -->#}
+        {#                    <a class="btn btn-primary">Купити</a>#}
+        {##}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+
+    </div>
+</div>
+
+<!-- Order section -->
+<!-- TODO: Fix alignment -->
+<div class="container">
+    <div class="row py-5">
+        <div class="col-7">
+            <h2 class="h2">Як оформити та оплатити замовлення</h2>
+            <p class="text-muted">Оплата замовлення здійснюється просто та швидко для Вашого комфорту. Після того як Ви
+                вибрали товар та перемістили його у кошик, потрібно натиснути кнопку оформити замовлення, далі ввести
+                всі потрібні дані та натиснути кнопку оплата, ввести дані Вашої карти та все готово! На пошту Вам прийде
+                лист з підтвердженням Вашого замовлення.</p>
+        </div>
+        <div class="col-5">
+            <img src="{% static 'images/payment-image.png' %}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Payment section -->
+<!-- TODO:  -->
+<section class="has-divider bg-primary">
+    <div class="container">
+        <div class="row py-6">
+            <div class="col">
+                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-8 m-5 text-center pink-text">
+                <h2 class="h2 mt-5">Чому ми праюємо лише накладним платижем</h2>
+                <p class="mt-4 mx-6 px-2">Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія
+                    того, що Ви заберете свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не
+                    повернувся за деякий час до Вас, адже такий продукт ми просто викидаємо.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Delievery section -->
+<!-- TODO: Fix alignment -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="h2 mt-3">Терміни відправки замовлення</h2>
+            <p class="text-muted">Наша компанія старається, щоб Ваш товар прибув до Вас як можна швидше, тому після
+                оплати замовлення ми одразу складаємо його та відправляємо протягом 2 робочих днів. Під час акцій
+                можлива затримка до 4 робочих днів. Ми працюємо для Вас з понеділка по п’ятницю і з радістю пакуємо Ваші
+                замовлення. Ми відправляємо товар - Ви оплачуєте доставлення та робите свій Sweet Step разом з нами.</p>
+        </div>
+        <div class="col-6">
+            <img src="{% static 'images/shipping-image.png' %}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Contact section -->
+<!-- TODO: Redo with bootstrap floating labels -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 ">
+            <h2 class="h1 mt-3 text-center">Про нашу компанію</h2>
+            <p class="text-muted text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
+            <form action="{% url 'contact_us' %}" method="post">
+                {% csrf_token %}
+                <div class="col-4">
+                    <label for="firstName" class="form-label">Ім'я</label>
+                    <input type="text" class="form-control" id="firstName" name="name" placeholder="" value=""
+                           required="">
+                    <div class="invalid-feedback">Valid first name is required.</div>
+                </div>
+                <div class="col-4">
+                    <label for="firstName" class="form-label">Номер телефону</label>
+                    <input type="tel" class="form-control" id="firstName" name="phone_number" placeholder="" value=""
+                           required="">
+                    <div class="invalid-feedback">Valid first name is required.</div>
+                </div>
+                <div class="col-4">
+                    <label for="firstName" class="form-label">Залиште тут свою пропозицію по співпраці або залиште вікно
+                        пустим</label>
+                    <textarea class="form-control" name="email" aria-label="With textarea"></textarea>
+                    <div class="invalid-feedback">Valid first name is required.</div>
+                </div>
+                <button class="btn btn-primary my-3" type="submit">Надіслати</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- TODO: Add logo and social media icons -->
+<div class="container">
+    <footer class="row row-cols-4 py-5 my-5 border-top">
+        <div class="col">
+            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <p class="text-muted">© 2021</p>
+        </div>
+
+        <div class="col">
+
+        </div>
+
+        <div class="col">
+            <h5>Навігація:</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Про нас</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Товари</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Як замовити</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Оплата</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Відправлення</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Співпраця</a></li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <h5>Контактна інформація:</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Телефон: + (380) 00 000 00 00</a>
+                </li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Електронна пошта:
+                    email@gmail.com</a></li>
+            </ul>
+        </div>
+
+    </footer>
+    <div class="row py-5 my-5 border-top">
+        <div class="col text-center">
+            <p class="text-muted">© 2021 Sweet Step Всі права зарезервовано</p>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'css/bootstrap/dist/js/bootstrap.js' %}"></script>
+</html>
