@@ -4461,6 +4461,7 @@ textarea.form-control-lg {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
+  background-color: mediumvioletred;
 }
 .badge:empty {
   display: none;
@@ -10522,6 +10523,11 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+/*Custom elements*/
+.cart {
+  padding-right: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */
