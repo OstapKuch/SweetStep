@@ -49,8 +49,10 @@
 <!-- ---------- Cart ---------- -->
         <div class="cart" id="cart">
             <button  onclick="console.log('click but')" type="button" class="btn position-relative">
+                <a href="{% url 'cart' %}">
                 <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span></span>
+                </a>
             </button>
         </div>
 <!-- ---------- Cart ---------- -->
