@@ -14,7 +14,7 @@
 <!-- ---------- Navbar ---------- -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url "index" %}">
             Logo
             <!-- <img class="" src="images/icons/logo.svg" alt="Logo"> -->
         </a>
@@ -46,7 +46,7 @@
         </div>
         <div>
             <span>
-              <img class="shopping-bag-icon" src="images/icons/shopping-bag.svg" alt="Shopping bag">
+                <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
             </span>
         </div>
     </div>
@@ -114,7 +114,7 @@
                     </tbody>
                 </table>
 
-                <p>Всього: sum</p>
+                <p id="sum">Всього: sum</p>
                 <button class="btn btn-primary">Продовжити</button>
             </div>
         </div>
