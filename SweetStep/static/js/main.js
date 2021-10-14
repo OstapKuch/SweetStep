@@ -52,18 +52,7 @@ function GetDictValuesSum(dictionary) {
     return sum
 }
 
-function RemoveItemsFromCart(item, count) {
-    let items = GetLocalStorageObject(STORAGE_KEY);
-    let current_item_count = items[item];
-    if (current_item_count > count) {
-        items[item] = current_item_count - count;
-    } else if (current_item_count === count) {
-        delete items[item]
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    ShowCart(items);
-    console.log(items);
-}
+
 
 
 LoadSite();

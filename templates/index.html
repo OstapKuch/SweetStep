@@ -92,8 +92,8 @@
                 <div class="card h-100">
                     {% for image in images %}
                         {% if image.product_id_id == product.id %}
-                            {#<img class="room-img" src="{{ image.image.url }}" style="max-height: 200px;">#}
-                            <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">
+                            <img class="room-img" src="{{ image.image.url }}" style="max-height: 200px;">
+{#                            <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">#}
                         {% endif %}
                     {% endfor %}
                     <div class="card-body">
