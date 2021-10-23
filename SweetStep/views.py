@@ -6,7 +6,6 @@ from django.core import serializers
 from django.http import HttpResponse
 
 
-
 def index(request):
     products = Product.objects.all()
     images = ProductImage.objects.all().filter(is_main_image=1)
@@ -15,6 +14,10 @@ def index(request):
                       'products': products,
                       'images': images
                   })
+
+
+def delivery(request):
+    return render(request, 'delivery_info.html')
 
 
 def products(request):
@@ -29,6 +32,7 @@ def products(request):
     #     }
     # )
 
+
 def images(request):
     images = ProductImage.objects.all().filter(is_main_image=1)
     qs_json = serializers.serialize('json', images)
@@ -39,6 +43,7 @@ def images(request):
     #         'images': images
     #     }
     # )
+
 
 def cart(request):
     products = Product.objects.all()
