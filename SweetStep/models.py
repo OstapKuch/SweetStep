@@ -24,4 +24,6 @@ class ProductImage(models.Model):
 
 class Order(models.Model):
     user = models.CharField(max_length=60)
-
+    email = models.CharField(max_length=60)
+    phone = models.CharField(max_length=60)
+    total_price = models.CharField(max_length=60)
