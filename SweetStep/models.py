@@ -20,3 +20,8 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return self.image_name
+
+
+class Order(models.Model):
+    user = models.CharField(max_length=60)
+
