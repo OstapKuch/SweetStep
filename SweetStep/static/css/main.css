@@ -16,6 +16,13 @@
   color: #E09479;
 }
 
+.screen-height {
+  height: 100vh;
+}
+
+.color-light {
+    color: #e09479;
+}
 /*!
  * Bootstrap v5.1.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -81,7 +88,8 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
+  /*color: var(--bs-body-color);*/
+  color: #ffffff;
   text-align: var(--bs-body-text-align);
   background-color: #251312;
   -webkit-text-size-adjust: 100%;
@@ -1960,12 +1968,12 @@ progress {
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529;
+  color: #fff;
   vertical-align: top;
   border-color: #dee2e6;
 }
 .table > :not(caption) > * > * {
-  padding: 0.5rem 0.5rem;
+  padding: 1.5rem 0.5rem;
   background-color: var(--bs-table-bg);
   border-bottom-width: 1px;
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
@@ -2183,9 +2191,9 @@ progress {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: #1a0c0b;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #df9379;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2203,7 +2211,7 @@ progress {
 }
 .form-control:focus {
   color: #212529;
-  background-color: #fff;
+  background-color: #1a0c0b;;
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -2932,8 +2940,8 @@ textarea.form-control-lg {
 }
 .btn-primary:hover {
   color: #000;
-  background-color: #fcbdc7;
-  border-color: #fbb9c4;
+  background-color:#712f17;
+  border-color: #712f17;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #000;
@@ -2943,16 +2951,16 @@ textarea.form-control-lg {
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #000;
-  background-color: #fcc1ca;
-  border-color: #fbb9c4;
+  background-color: #712f17;
+  border-color: #712f17;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(213, 150, 161, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #000;
-  background-color: #FBB1BD;
-  border-color: #FBB1BD;
+  background-color:#712f17;
+  border-color: #712f17;
 }
 
 .btn-secondary {
@@ -3508,7 +3516,7 @@ textarea.form-control-lg {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 1.5rem 1rem;
   color: #0d6efd;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -3806,8 +3814,8 @@ textarea.form-control-lg {
     position: absolute;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
   .navbar-expand-lg .navbar-nav-scroll {
     overflow: visible;
@@ -4112,7 +4120,8 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
 }
 
 .card-title {
@@ -4463,7 +4472,8 @@ textarea.form-control-lg {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
-  background-color: mediumvioletred;
+  /*background-color: mediumvioletred;*/
+  background-color: #E09479;
 }
 .badge:empty {
   display: none;
@@ -6801,6 +6811,10 @@ textarea.form-control-lg {
 .py-5 {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
+}
+
+.py-6 {
+  padding-top: 6rem !important;
 }
 
 .pt-0 {

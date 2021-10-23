@@ -96,7 +96,7 @@ function AddImage(data, row) {
     let cell = row.insertCell();
     let img = new Image();
     // img.src = currentLocation + "/media/" + data;
-    img.src = currentLocation + "/static/images/product.JPG";
+    img.src = currentLocation + "/static/images/hero-image.png";
     img.className = "img-fluid rounded float-start";
     img.style = "height: 4em";
     cell.appendChild(img);
@@ -105,8 +105,10 @@ function AddImage(data, row) {
 function AddButton(id, row) {
     let cell = row.insertCell();
     let button = document.createElement("button");
-    button.innerHTML = "Видалити";
-    button.className = "delete-cart-but";
+    var delete_icon = document.createElement('img')
+    delete_icon.src = '/static/images/icons/trash.svg'
+    button.className = "delete-cart-but btn";
+    button.appendChild(delete_icon)
     button.id = id;
     button.onclick = function () {
         RemoveItemsFromCart("product_" + id, 1);

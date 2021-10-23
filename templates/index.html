@@ -14,31 +14,30 @@
 
 
 <!-- ---------- Navbar ---------- -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
 {#            <img class="" src="{% static 'images/icons/logo.svg' %}" alt="Logo">#}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Про нас</a>
+                    <a class="nav-link active" aria-current="page" href="#about-section">Про нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Товари</a>
+                    <a class="nav-link" href="#products-section">Товари</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Як замовити</a>
+                    <a class="nav-link" href="#how-to-order-section">Як замовити</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Оплата</a>
+                    <a class="nav-link" href="#payment-section">Оплата</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Відправлення</a>
+                    <a class="nav-link" href="#delivery-section">Відправлення</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Співпраця</a>
@@ -61,17 +60,17 @@
 </nav>
 
 <!-- ---------- About us section ---------- -->
-<section class="has-divider bg-primary">
+<section id="about-section" class="has-divider bg-primary pb-lg-5">
     <div class="container">
-        <div class="row py-5 align-self-center">
-            <div class="col">
+        <div class="row py-6 align-self-center">
+            <div class="col-lg-6 p-lg-5">
                 <img src="{% static 'images/hero_image.png' %}" class="rounded img-fluid float-start" alt="">
             </div>
-            <div class="col-lg-6 col-xs">
-                <h3 class="h2 pink-text">Про нашу компанію</h3>
-                <p class="fs-6 pink-text">
-                    Sweet Step – Український виробник чурчхели зі смаками світових брендів, у нас
-                    Ви зможете знайти єдину в Україні чурчхелу зі смаком Coca Cola, Fanta, Sprite та багато інших
+            <div class="col-lg-6 p-lg-5 col-xs">
+                <h3 class="h2 pt-lg-5 px-lg-5 py-lg-3 pink-text">Про нашу компанію</h3>
+                <p class="fs-6 px-lg-5 pink-text">
+                    <b>Sweet Step</b> – Український виробник чурчхели зі смаками світових брендів, у нас
+                    Ви зможете знайти єдину в Україні чурчхелу зі смаком <b>Coca Cola</b>, <b>Fanta</b>, <b>Sprite</b> та багато інших
                     новинок, при тому, ми не відходимо від справжніх рецептур якісного та смачного грузинського
                     продукту, а також пропонуємо класичні смаки, які не поступаються новинкам. Наша головна мета -
                     здивувати Вас якісним продуктом і новими смаками, які до того Ви точно не коштували у чурчхелі та
@@ -83,59 +82,70 @@
     </div>
 </section>
 
-<!-- Goods -->
-<!-- TODO: Add shopping cart icon, fix price style -->
-<div class="container py-5">
-    <div class="row">
+<!-- Products -->
+<section id="products-section">
+    <div class="container py-5">
+        <div class="row">
         {% for product in products %}
             <div class="col">
                 <div class="card h-100">
                     {% for image in images %}
                         {% if image.product_id_id == product.id %}
-                            <img class="room-img" src="{{ image.image.url }}" style="max-height: 200px;">
-{#                            <img src="{% static 'images/product.JPG' %}" class="card-img-top" alt="...">#}
+                            <img class="room-img" src="{{ image.image.url }}" style="">
                         {% endif %}
                     {% endfor %}
                     <div class="card-body">
-                        <p class="fs-5">{{ product.title }}</p>
+                        <p class="fs-5 fw-bold color-light">{{ product.title }}</p>
                         <p class="card-text">{{ product.description }}</p>
-                        <p class="card-text">  {{ product.price }} </p>
-                        <button class="btn btn-primary" id="product_{{ product.id }}" onclick="AddItemToCart(this.id, 1)">Купити</button>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text fw-bold" style="font-size: larger;">{{ product.price }} грн</p>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary" id="product_{{ product.id }}" onclick="AddItemToCart(this.id, 1)">Купити</button>
+                                <button class="btn">
+                                    <img class="room-img" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping cart">
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-</div>
+    </div>
+</section>
 
 <!-- Order section -->
-<!-- TODO: Fix alignment -->
-<div class="container">
-    <div class="row py-5">
-        <div class="col-lg-7 col-xs">
-            <h2 class="h2">Як оформити та оплатити замовлення</h2>
-            <p class="text-muted">Оплата замовлення здійснюється просто та швидко для Вашого комфорту. Після того як Ви
-                вибрали товар та перемістили його у кошик, потрібно натиснути кнопку оформити замовлення, далі ввести
-                всі потрібні дані та натиснути кнопку оплата, ввести дані Вашої карти та все готово! На пошту Вам прийде
-                лист з підтвердженням Вашого замовлення.</p>
-        </div>
-        <div class="col-lg-5 col-xs">
-            <img src="{% static 'images/payment-image.png' %}" class="img-fluid" alt="">
+<section id="how-to-order-section" class="p-lg-5">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-7 p-lg-5 col-xs">
+                <h2 class="fs-3 pt-lg-5 px-lg-5 color-light">Як оформити та оплатити замовлення</h2>
+                <p class="px-lg-5">
+                    Оплата замовлення здійснюється просто та швидко для Вашого комфорту. Після того як Ви
+                    вибрали товар та перемістили його у кошик, потрібно натиснути кнопку оформити замовлення, далі ввести
+                    всі потрібні дані та натиснути кнопку оплата, ввести дані Вашої карти та все готово! На пошту Вам прийде
+                    лист з підтвердженням Вашого замовлення.</p>
+            </div>
+            <div class="col-lg-5 p-lg-5 col-xs">
+                <img src="{% static 'images/taxi-online-shopping.png' %}" class="img-fluid" alt="">
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Payment section -->
-<!-- TODO:  -->
-<section class="has-divider bg-primary">
+<section id="payment-section" class="has-divider bg-primary">
     <div class="container">
-        <div class="row py-6">
-            <div class="col-lg-4 d-none">
-                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">
-            </div>
-            <div class="col-8 m-5 text-center pink-text">
+        <div class="row p-5">
+{#            <div class="col-lg-4 d-none">#}
+{#                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">#}
+{#            </div>#}
+            <div class="col m-5 text-center pink-text">
                 <h2 class="h2 mt-5">Чому ми працюємо лише накладним платижем</h2>
-                <p class="mt-4 mx-6 px-2">Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія
+                <p class="mt-4 m-5 px-2">
+                    Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія
                     того, що Ви заберете свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не
                     повернувся за деякий час до Вас, адже такий продукт ми просто викидаємо.</p>
             </div>
@@ -144,27 +154,30 @@
 </section>
 
 <!-- Delievery section -->
-<!-- TODO: Fix alignment -->
-<div class="container py-5">
+<section id="delivery-section">
+    <div class="container py-5">
     <div class="row">
-        <div class="col-lg-6 col-xs">
-            <h2 class="h2 mt-3">Терміни відправки замовлення</h2>
-            <p class="text-muted">Наша компанія старається, щоб Ваш товар прибув до Вас як можна швидше, тому після
+        <div class="col-lg-7 p-lg-5 col-xs">
+            <h2 class="fs-3 pt-lg-5 px-lg-5 color-light">Терміни відправки замовлення</h2>
+            <p class="px-lg-5">
+                Наша компанія старається, щоб Ваш товар прибув до Вас як можна швидше, тому після
                 оплати замовлення ми одразу складаємо його та відправляємо протягом 2 робочих днів. Під час акцій
                 можлива затримка до 4 робочих днів. Ми працюємо для Вас з понеділка по п’ятницю і з радістю пакуємо Ваші
                 замовлення. Ми відправляємо товар - Ви оплачуєте доставлення та робите свій Sweet Step разом з нами.</p>
         </div>
-        <div class="col-lg-6 col-xs">
-            <img src="{% static 'images/shipping-image.png' %}" class="img-fluid" alt="">
+        <div class="col-lg-5 p-lg-5 col-xs">
+            <img src="{% static 'images/taxi-deadline-is-too-soon.png' %}" class="img-fluid" alt="">
         </div>
     </div>
 </div>
+</section>
+
 
 <!-- Contact section -->
 <!-- TODO: Redo with bootstrap floating labels -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 ">
+        <div class="col-12">
             <h2 class="h1 mt-3 text-center">Про нашу компанію</h2>
             <p class="text-muted text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
             <form action="{% url 'contact_us' %}" method="post">
