@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <title>Sweet Step</title>
+    <title>Tasty Step</title>
 </head>
 <body>
 
@@ -17,9 +17,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-{#            <img class="" src="{% static 'images/icons/logo.svg' %}" alt="Logo">#}
+            {#            <img class="" src="{% static 'images/icons/logo.svg' %}" alt="Logo">#}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -40,21 +41,23 @@
                     <a class="nav-link" href="#delivery-section">Відправлення</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Співпраця</a>
+                    <a class="nav-link" href="#cooperation-section">Співпраця</a>
                 </li>
             </ul>
         </div>
 
-<!-- ---------- Cart ---------- -->
+        <!-- ---------- Cart ---------- -->
         <div class="cart" id="cart">
-            <button  onclick="console.log('click but')" type="button" class="btn position-relative">
+            <button onclick="console.log('click but')" type="button" class="btn position-relative">
                 <a href="{% url 'cart' %}">
-                <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span></span>
+                    <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}"
+                         alt="Shopping bag">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span
+                            id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span></span>
                 </a>
             </button>
         </div>
-<!-- ---------- Cart ---------- -->
+        <!-- ---------- Cart ---------- -->
 
     </div>
 </nav>
@@ -69,13 +72,16 @@
             <div class="col-lg-6 p-lg-5 col-xs">
                 <h3 class="h2 pt-lg-5 px-lg-5 py-lg-3 pink-text">Про нашу компанію</h3>
                 <p class="fs-6 px-lg-5 pink-text">
-                    <b>Sweet Step</b> – Український виробник чурчхели зі смаками світових брендів, у нас
-                    Ви зможете знайти єдину в Україні чурчхелу зі смаком <b>Coca Cola</b>, <b>Fanta</b>, <b>Sprite</b> та багато інших
-                    новинок, при тому, ми не відходимо від справжніх рецептур якісного та смачного грузинського
-                    продукту, а також пропонуємо класичні смаки, які не поступаються новинкам. Наша головна мета -
-                    здивувати Вас якісним продуктом і новими смаками, які до того Ви точно не коштували у чурчхелі та
-                    надати цьому продукту нове дихання. Наш продукт це не тільки смачно, а ще й зручно, адже через
-                    зручне упакування Ви можете ласувати його у будь-якому місці.
+                    <b>Tasty Step</b> – Український виробник натуральних сушених снеків зі смаками світових брендів, у
+                    нас Ви зможете знайти смачний та органічний продукт без будь-яких хімічних добавок та консервантів.
+                    Ми не відходимо від справжніх рецептур якісного та смачного корисного і поживного продукту, а також
+                    пропонуємо не тільки класичні смаки перекусів чи закусок, які до вподоба кожному, а ще і безліч
+                    цікавих новинок та непередбачуваних поєднань смаків, які не поступаються новинкам.
+                    <br>
+                    Наша головна мета - здивувати Вас якісним продуктом і цікавими смаками, та надати цьому продукту
+                    нове дихання. Наш продукт це не тільки смачно, а ще й зручно, адже через зручне упакування Ви можете
+                    ласувати його у будь-якому місці.
+
                 </p>
             </div>
         </div>
@@ -86,33 +92,36 @@
 <section id="products-section">
     <div class="container py-5">
         <div class="row">
-        {% for product in products %}
-            <div class="col">
-                <div class="card h-100">
-                    {% for image in images %}
-                        {% if image.product_id_id == product.id %}
-                            <img class="room-img" src="{{ image.image.url }}" style="">
-                        {% endif %}
-                    {% endfor %}
-                    <div class="card-body">
-                        <p class="fs-5 fw-bold color-light">{{ product.title }}</p>
-                        <p class="card-text">{{ product.description }}</p>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text fw-bold" style="font-size: larger;">{{ product.price }} грн</p>
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-primary" id="product_{{ product.id }}" onclick="AddItemToCart(this.id, 1)">Купити</button>
-                                <button class="btn">
-                                    <img class="room-img" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping cart">
-                                </button>
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% for image in images %}
+                            {% if image.product_id_id == product.id %}
+                                <img class="room-img" src="{{ image.image.url }}" style="">
+                            {% endif %}
+                        {% endfor %}
+                        <div class="card-body">
+                            <p class="fs-5 fw-bold color-light">{{ product.title }}</p>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text fw-bold" style="font-size: larger;">{{ product.price }} грн</p>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary" id="product_{{ product.id }}"
+                                            onclick="AddItemToCart(this.id, 1)">Купити
+                                    </button>
+                                    <button class="btn">
+                                        <img class="room-img" src="{% static 'images/icons/shopping-bag.svg' %}"
+                                             alt="Shopping cart">
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
@@ -124,8 +133,10 @@
                 <h2 class="fs-3 pt-lg-5 px-lg-5 color-light">Як оформити та оплатити замовлення</h2>
                 <p class="px-lg-5">
                     Оплата замовлення здійснюється просто та швидко для Вашого комфорту. Після того як Ви
-                    вибрали товар та перемістили його у кошик, потрібно натиснути кнопку оформити замовлення, далі ввести
-                    всі потрібні дані та натиснути кнопку оплата, ввести дані Вашої карти та все готово! На пошту Вам прийде
+                    вибрали товар та перемістили його у кошик, потрібно натиснути кнопку оформити замовлення, далі
+                    ввести
+                    всі потрібні дані та натиснути кнопку оплата, ввести дані Вашої карти та все готово! На пошту Вам
+                    прийде
                     лист з підтвердженням Вашого замовлення.</p>
             </div>
             <div class="col-lg-5 p-lg-5 col-xs">
@@ -139,15 +150,15 @@
 <section id="payment-section" class="has-divider bg-primary">
     <div class="container">
         <div class="row p-5">
-{#            <div class="col-lg-4 d-none">#}
-{#                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">#}
-{#            </div>#}
+            {#            <div class="col-lg-4 d-none">#}
+            {#                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">#}
+            {#            </div>#}
             <div class="col m-5 text-center pink-text">
                 <h2 class="h2 mt-5">Чому ми працюємо лише накладним платижем</h2>
                 <p class="mt-4 m-5 px-2">
-                    Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія
-                    того, що Ви заберете свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не
-                    повернувся за деякий час до Вас, адже такий продукт ми просто викидаємо.</p>
+                    Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія того, що Ви заберете
+                    свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не повернувся за деякий
+                    час до Вас, адже такий продукт ми просто викидаємо.</p>
             </div>
         </div>
     </div>
@@ -156,56 +167,60 @@
 <!-- Delievery section -->
 <section id="delivery-section">
     <div class="container py-5">
-    <div class="row">
-        <div class="col-lg-7 p-lg-5 col-xs">
-            <h2 class="fs-3 pt-lg-5 px-lg-5 color-light">Терміни відправки замовлення</h2>
-            <p class="px-lg-5">
-                Наша компанія старається, щоб Ваш товар прибув до Вас як можна швидше, тому після
-                оплати замовлення ми одразу складаємо його та відправляємо протягом 2 робочих днів. Під час акцій
-                можлива затримка до 4 робочих днів. Ми працюємо для Вас з понеділка по п’ятницю і з радістю пакуємо Ваші
-                замовлення. Ми відправляємо товар - Ви оплачуєте доставлення та робите свій Sweet Step разом з нами.</p>
-        </div>
-        <div class="col-lg-5 p-lg-5 col-xs">
-            <img src="{% static 'images/taxi-deadline-is-too-soon.png' %}" class="img-fluid" alt="">
+        <div class="row">
+            <div class="col-lg-7 p-lg-5 col-xs">
+                <h2 class="fs-3 pt-lg-5 px-lg-5 color-light">Терміни відправки замовлення</h2>
+                <p class="px-lg-5">
+                    Наша компанія старається, щоб Ваш товар прибув до Вас як можна швидше, тому після оплати замовлення
+                    ми одразу складаємо його та відправляємо протягом 2 робочих днів. Під час акцій можлива затримка до
+                    4 робочих днів. Ми працюємо для Вас з понеділка по п’ятницю і з радістю пакуємо Ваші замовлення. Ми
+                    відправляємо товар - Ви оплачуєте доставлення та робите свій Tasty Step разом з нами.</p>
+            </div>
+            <div class="col-lg-5 p-lg-5 col-xs">
+                <img src="{% static 'images/taxi-deadline-is-too-soon.png' %}" class="img-fluid" alt="">
+            </div>
         </div>
     </div>
-</div>
 </section>
 
 
 <!-- Contact section -->
 <!-- TODO: Redo with bootstrap floating labels -->
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <h2 class="h1 mt-3 text-center">Про нашу компанію</h2>
-            <p class="text-muted text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
-            <form action="{% url 'contact_us' %}" method="post">
-                {% csrf_token %}
-                <div class="col-lg-4 col-xs">
-                    <label for="firstName" class="form-label">Ім'я</label>
-                    <input type="text" class="form-control" id="firstName" name="name" placeholder="" value=""
-                           required="">
-                    <div class="invalid-feedback">Valid first name is required.</div>
-                </div>
-                <div class="col-lg-4 col-xs">
-                    <label for="firstName" class="form-label">Номер телефону</label>
-                    <input type="tel" class="form-control" id="firstName" name="phone_number" placeholder="" value=""
-                           required="">
-                    <div class="invalid-feedback">Valid first name is required.</div>
-                </div>
-                <div class="col-lg-4 col-xs">
-                    <label for="firstName" class="form-label">Залиште тут свою пропозицію по співпраці або залиште вікно
-                        пустим</label>
-                    <textarea class="form-control" name="email" aria-label="With textarea"></textarea>
-                    <div class="invalid-feedback">Valid first name is required.</div>
-                </div>
-                <button class="btn btn-primary my-3" type="submit">Надіслати</button>
-            </form>
+<section id="cooperation-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="h1 mt-3 text-center">Про нашу компанію</h2>
+                <p class="text-muted text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
+                <form action="{% url 'contact_us' %}" method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-4 col-xs">
+                        <label for="firstName" class="form-label">Ім'я</label>
+                        <input type="text" class="form-control" id="firstName" name="name" placeholder="" value=""
+                               required="">
+                        <div class="invalid-feedback">Valid first name is required.</div>
+                    </div>
+                    <div class="col-lg-4 col-xs">
+                        <label for="firstName" class="form-label">Номер телефону</label>
+                        <input type="tel" class="form-control" id="firstName" name="phone_number" placeholder=""
+                               value=""
+                               required="">
+                        <div class="invalid-feedback">Valid first name is required.</div>
+                    </div>
+                    <div class="col-lg-4 col-xs">
+                        <label for="firstName" class="form-label">Залиште тут свою пропозицію по співпраці або залиште
+                            вікно
+                            пустим</label>
+                        <textarea class="form-control" name="email" aria-label="With textarea"></textarea>
+                        <div class="invalid-feedback">Valid first name is required.</div>
+                    </div>
+                    <button class="btn btn-primary my-3" type="submit">Надіслати</button>
+                </form>
 
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Footer -->
 <!-- TODO: Add logo and social media icons -->
@@ -242,14 +257,14 @@
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Телефон: + (380) 00 000 00 00</a>
                 </li>
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Електронна пошта:
-                    email@gmail.com</a></li>
+                    tastystep@gmail.com</a></li>
             </ul>
         </div>
 
     </footer>
     <div class="row py-5 my-5 border-top">
         <div class="col text-center">
-            <p class="text-muted">© 2021 Sweet Step Всі права зарезервовано</p>
+            <p class="text-muted">© 2021 Tasty Step Всі права зарезервовано</p>
         </div>
     </div>
 </div>
