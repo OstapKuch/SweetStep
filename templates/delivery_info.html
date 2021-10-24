@@ -11,67 +11,18 @@
     <title>Sweet Step</title>
 </head>
 <body>
-<!-- ---------- Navbar ---------- -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            {#            <img class="" src="{% static 'images/icons/logo.svg' %}" alt="Logo">#}
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#about-section">Про нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#products-section">Товари</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#how-to-order-section">Як замовити</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#payment-section">Оплата</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#delivery-section">Відправлення</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#cooperation-section">Співпраця</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- ---------- Cart ---------- -->
-{#        <div class="cart" id="cart">#}
-{#            <button onclick="console.log('click but')" type="button" class="btn position-relative">#}
-{#                <a href="{% url 'cart' %}">#}
-{#                    <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}"#}
-{#                         alt="Shopping bag">#}
-{#                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span#}
-{#                            id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span></span>#}
-{#                </a>#}
-{#            </button>#}
-{#        </div>#}
-        <!-- ---------- Cart ---------- -->
-
-    </div>
-</nav>
-
 <section class="section" style="background-color: #1a0c0b;">
     <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'cart' %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
-                <span class="p-lg-1 my-lg-1 fs-6">В кошик</span>
-            </a>
-        </li>
         <li class="nav-item">
             <a class="nav-link align-middle" href="{% url "index" %}" style="color: #fff">
                 <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/home.svg' %}" alt="Shopping bag">
                 <span class="p-lg-1 my-lg-1 fs-6">На головну</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'cart' %}" style="color: #fff">
+                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
+                <span class="p-lg-1 my-lg-1 fs-6">В кошик</span>
             </a>
         </li>
     </ul>
@@ -82,38 +33,40 @@
         <div class="row">
             <div class="col-lg-7 ">
                 <h2 class="h1 mt-3 text-center">Персональні дані</h2>
-                <div class="col-lg-5 justify-content-center">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Ім'я</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-lg-5">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Прізвище</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-lg-5">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Побатькові</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-lg-5">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер телефону</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-lg-5">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Електронна адреса</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-lg-5">
+                <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер відділення Нової Пошти</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
 
-                <button class="btn btn-primary">Оплатити</button>
+                <div class="col text-center">
+                    <button class="btn btn-primary my-3 col-xs" type="submit">Оплатити</button>
+                </div>
             </div>
             <div class="col-lg-5 p-lg-5">
                  <img src="{% static 'images/taxi-769.png' %}" class="img-fluid" alt="">

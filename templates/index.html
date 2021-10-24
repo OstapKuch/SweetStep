@@ -43,6 +43,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#cooperation-section">Співпраця</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact-section">Контакти</a>
+                </li>
             </ul>
         </div>
 
@@ -91,7 +94,7 @@
 <!-- Products -->
 <section id="products-section">
     <div class="container py-5">
-        <div class="row">
+        <div class="row pt-lg-5">
             {% for product in products %}
                 <div class="col">
                     <div class="card h-100">
@@ -149,13 +152,10 @@
 <!-- Payment section -->
 <section id="payment-section" class="has-divider bg-primary">
     <div class="container">
-        <div class="row p-5">
-            {#            <div class="col-lg-4 d-none">#}
-            {#                <img src="{% static 'images/girl-eating.png' %}" class="img-fluid" alt="">#}
-            {#            </div>#}
-            <div class="col m-5 text-center pink-text">
-                <h2 class="h2 mt-5">Чому ми працюємо лише накладним платижем</h2>
-                <p class="mt-4 m-5 px-2">
+        <div class="row p-lg-5 p-sm-2">
+            <div class="col m-lg-5 text-center pink-text">
+                <h2 class="h2 m-lg-5 pt-sm-5">Чому ми працюємо лише накладним платижем</h2>
+                <p class="mt-4 m-lg-5 px-2">
                     Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія того, що Ви заберете
                     свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не повернувся за деякий
                     час до Вас, адже такий продукт ми просто викидаємо.</p>
@@ -188,33 +188,35 @@
 <!-- TODO: Redo with bootstrap floating labels -->
 <section id="cooperation-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
+        <div class="row justify-content-center pt-lg-5">
+            <div class="col-12 pt-lg-5">
                 <h2 class="h1 mt-3 text-center">Про нашу компанію</h2>
-                <p class="text-muted text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
+                <p class="text-center">Залиште свої дані і ми неодмінно з Вами зв’яжемось.</p>
                 <form action="{% url 'contact_us' %}" method="post">
                     {% csrf_token %}
-                    <div class="col-lg-4 col-xs">
+                    <div class="center-block m-auto col-xs" style="max-width: 500px;">
                         <label for="firstName" class="form-label">Ім'я</label>
                         <input type="text" class="form-control" id="firstName" name="name" placeholder="" value=""
                                required="">
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
-                    <div class="col-lg-4 col-xs">
+                    <div class="center-block m-auto col-xs" style="max-width: 500px;">
                         <label for="firstName" class="form-label">Номер телефону</label>
                         <input type="tel" class="form-control" id="firstName" name="phone_number" placeholder=""
                                value=""
                                required="">
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
-                    <div class="col-lg-4 col-xs">
+                    <div class="center-block m-auto col-xs" style="max-width: 500px;">
                         <label for="firstName" class="form-label">Залиште тут свою пропозицію по співпраці або залиште
                             вікно
                             пустим</label>
                         <textarea class="form-control" name="email" aria-label="With textarea"></textarea>
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
-                    <button class="btn btn-primary my-3" type="submit">Надіслати</button>
+                    <div class="col text-center">
+                        <button class="btn btn-primary my-3" type="submit">Надіслати</button>
+                    </div>
                 </form>
 
             </div>
@@ -222,49 +224,21 @@
     </div>
 </section>
 
-<!-- Footer -->
-<!-- TODO: Add logo and social media icons -->
-<div class="container">
-    <footer class="row row-cols-4 py-5 my-5 border-top">
-        <div class="col d-none">
-            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
-            <p class="text-muted">© 2021</p>
-        </div>
 
-        <div class="col">
-
-        </div>
-
-        <div class="col d-none">
-            <h5>Навігація:</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Про нас</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Товари</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Як замовити</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Оплата</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Відправлення</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Співпраця</a></li>
-            </ul>
-        </div>
-
-        <div class="col">
+<div id="contact-section" class="container">
+    <footer class="row py-5 my-5 border-top">
+        <div class="col text-center">
             <h5>Контактна інформація:</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Телефон: + (380) 00 000 00 00</a>
-                </li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Електронна пошта:
-                    tastystep@gmail.com</a></li>
-            </ul>
+            <p class="fs-6">Телефон: + (380) 00 000 00 00</p>
+            <p class="fs-6">Електронна пошта: tastystep@gmail.com</p>
+            <p class="fs-6">
+                <a href="https://instagram.com/tasty.step.ukraine?utm_medium=copy_link">Інстаграм: tastystep@gmail.com</a>
+            </p>
         </div>
-
     </footer>
     <div class="row py-5 my-5 border-top">
         <div class="col text-center">
-            <p class="text-muted">© 2021 Tasty Step Всі права зарезервовано</p>
+            <p class="">© 2021 Tasty Step Всі права зарезервовано</p>
         </div>
     </div>
 </div>
