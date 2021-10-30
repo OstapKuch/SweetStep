@@ -64,7 +64,7 @@ function createTable() {
             // CreateRow(data_images[i]["pk"], newRow);
             AddImage(data_images[i]["fields"]["image"], newRow)
             CreateRow(data_products[i]["fields"]["title"], newRow);
-            CreateRow(data_products[i]["fields"]["description"], newRow);
+            // CreateRow(data_products[i]["fields"]["description"], newRow);
             let product_count = items[identifier];
             if (product_count < 1) {
                 product_count = 1;

@@ -15,13 +15,13 @@
     <ul class="nav justify-content-center">
         <li class="nav-item">
             <a class="nav-link align-middle" href="{% url "index" %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/home.svg' %}" alt="Shopping bag">
+                <img class="shopping-bag-icon mb-lg-1 mb-2" src="{% static 'images/icons/home.svg' %}" alt="Shopping bag">
                 <span class="p-lg-1 my-lg-1 fs-6">На головну</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'cart' %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
+                <img class="shopping-bag-icon mb-lg-1 mb-2" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
                 <span class="p-lg-1 my-lg-1 fs-6">В кошик</span>
             </a>
         </li>
@@ -64,11 +64,11 @@
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
 
-                <div class="col text-center">
-                    <button class="btn btn-primary my-3 col-xs" type="submit">Оплатити</button>
+                <div class="col text-center mx-auto">
+                    <button class="btn btn-primary my-3 col-xs" style="width: -webkit-fill-available; max-width: 500px;" type="submit">Оплатити</button>
                 </div>
             </div>
-            <div class="col-lg-5 p-lg-5">
+            <div class="col-lg-5 p-lg-5 d-none d-sm-block">
                  <img src="{% static 'images/taxi-769.png' %}" class="img-fluid" alt="">
             </div>
         </div>
