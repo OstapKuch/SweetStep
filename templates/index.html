@@ -17,7 +17,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            {#            <img class="" src="{% static 'images/icons/logo.svg' %}" alt="Logo">#}
+            <img class="logo-image" src="{% static 'images/icons/log.svg' %}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,8 +55,9 @@
                 <a href="{% url 'cart' %}">
                     <img class="shopping-bag-icon" src="{% static 'images/icons/shopping-bag.svg' %}"
                          alt="Shopping bag">
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><span
-                            id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span></span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span id="cart_items_count"></span><span class="visually-hidden">зброблені покупки</span>
+                    </span>
                 </a>
             </button>
         </div>
@@ -96,7 +97,7 @@
     <div class="container py-5">
         <div class="row pt-lg-5">
             {% for product in products %}
-                <div class="col">
+                <div class="col mb-5">
                     <div class="card h-100">
                         {% for image in images %}
                             {% if image.product_id_id == product.id %}
@@ -110,13 +111,14 @@
                                 <div class="col">
                                     <p class="card-text fw-bold" style="font-size: larger;">{{ product.price }} грн</p>
                                 </div>
-                                <div class="col">
+                                <div class="col p-0">
                                     <button class="btn btn-primary" id="product_{{ product.id }}"
                                             onclick="AddItemToCart(this.id, 1)">Купити
                                     </button>
                                     <button class="btn">
-                                        <img class="room-img" src="{% static 'images/icons/shopping-bag.svg' %}"
-                                             alt="Shopping cart">
+                                        <a href="{% url 'cart' %}">
+                                            <img class="room-img" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping cart">
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -152,9 +154,9 @@
 <!-- Payment section -->
 <section id="payment-section" class="has-divider bg-primary">
     <div class="container">
-        <div class="row p-lg-5 p-sm-2">
-            <div class="col m-lg-5 text-center pink-text">
-                <h2 class="h2 m-lg-5 pt-sm-5">Чому ми працюємо лише накладним платижем</h2>
+        <div class="row p-lg-5 ">
+            <div class="col my-5 mx-lg-5 text-center pink-text">
+                <h2 class="h2 m-lg-5">Чому ми працюємо лише накладним платижем</h2>
                 <p class="mt-4 m-lg-5 px-2">
                     Ми продаємо тільки якісний продукт з наших полиць і Ваша оплата це гарантія того, що Ви заберете
                     свіжий товар, який перед тим не побував у руках нової пошти декілька раз, і не повернувся за деякий
@@ -215,7 +217,7 @@
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
                     <div class="col text-center">
-                        <button class="btn btn-primary my-3" type="submit">Надіслати</button>
+                        <button class="btn btn-primary my-3" type="submit" style="width: -webkit-fill-available; max-width: 500px;">Надіслати</button>
                     </div>
                 </form>
 
