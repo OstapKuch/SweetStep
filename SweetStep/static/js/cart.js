@@ -1,5 +1,5 @@
 siteLocalStorage = window.localStorage;
-STORAGE_KEY = "cart"
+STORAGE_KEY = "tasty_step_cart"
 
 function LocalStorageKeyExists(storageKey) {
     return localStorage.getItem(storageKey) !== null;
@@ -64,7 +64,7 @@ function createTable() {
             // CreateRow(data_images[i]["pk"], newRow);
             AddImage(data_images[i]["fields"]["image"], newRow)
             CreateRow(data_products[i]["fields"]["title"], newRow);
-            CreateRow(data_products[i]["fields"]["description"], newRow);
+            // CreateRow(data_products[i]["fields"]["description"], newRow);
             let product_count = items[identifier];
             if (product_count < 1) {
                 product_count = 1;
@@ -76,11 +76,15 @@ function createTable() {
             sum += price;
             CreateRow(price.toString() + " грн", newRow);
             AddButton(data_products[i]["pk"], newRow)
+
+
             // CreateRow("Del", newRow);
         }
     }
+    let input = document.getElementById("cart-input");
+    input.value = localStorage.getItem(STORAGE_KEY);
     let pSum = document.getElementById("sum");
-    pSum.innerText = "Всього: " + sum;
+    pSum.innerText = "Всього: " + sum + " грн";
 }
 
 
@@ -95,8 +99,8 @@ function CreateRow(data, row) {
 function AddImage(data, row) {
     let cell = row.insertCell();
     let img = new Image();
-    // img.src = currentLocation + "/media/" + data;
-    img.src = currentLocation + "/static/images/hero-image.png";
+    img.src = "/media/" + data;
+    // img.src = currentLocation + "/static/images/hero-image.png";
     img.className = "img-fluid rounded float-start";
     img.style = "height: 4em";
     cell.appendChild(img);

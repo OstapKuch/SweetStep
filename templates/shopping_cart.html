@@ -21,7 +21,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url "delivery" %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/credit-card.svg' %}" alt="Shopping bag">
+                <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/credit-card.svg' %}"
+                     alt="Shopping bag">
                 <span class="p-lg-1 my-lg-1 fs-6">Оплатити</span>
             </a>
         </li>
@@ -29,30 +30,44 @@
 </section>
 <section class="section">
     <div class="section p-lg-5">
-        <div class="row">
+        <div class="row cart-row">
             <div class="col">
                 <table class="table " id="cart-table">
                     <thead>
-                        <tr class="py-lg-3">
-                            <th scope="col">Товар</th>
-                            <th scope="col">Назва</th>
-                            <th class="d-md-none" scope="col">Опис</th>
-                            <th scope="col">Кількість</th>
-                            <th scope="col">Ціна</th>
-                            <th scope="col">Видалити</th>
-                        </tr>
+                    <tr class="py-lg-3">
+                        <th scope="col">Товар</th>
+                        <th scope="col">Назва</th>
+                        {#                            <th class="" scope="col">Опис</th>#}
+                        <th scope="col">Кількість</th>
+                        <th scope="col">Ціна</th>
+                        <th scope="col" class="sm-rm">Видалити</th>
+                    </tr>
                     </thead>
                     <tbody id="cart-tbody" class="align-middle py-lg-5 py-sm-0">
                     </tbody>
                 </table>
+                <p id="sum" class="fs-3">Всього: sum</p>
+                <form action="{% url "delivery" %}">
+                    <input type="text" name="cart" id="cart-input" style="display: none">
+                    <button type="submit" class="btn btn-primary btn-lg">Продовжити
+                    </button>
 
-                <p id="sum">Всього: sum</p>
-                <button class="btn btn-primary"><a href="{% url "delivery" %}">Далі</a></button>
+                </form>
             </div>
+
         </div>
     </div>
 </section>
+<footer style="position: fixed; bottom: 0; padding: 2em">
 
+    {#        <div class="col">#}
+    {#            <p id="sum" class="fs-3">Всього: sum</p>#}
+    {#        </div>#}
+    {#        <div class="col">#}
+    {#            <button class="btn btn-primary"><a href="{% url "delivery" %}" style="color: #fff;">Продовжити</a></button>#}
+    {#        </div>#}
+
+</footer>
 </body>
 <script type="text/javascript" src="{% static 'js/jquery-3.6.0.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
