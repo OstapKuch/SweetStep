@@ -1,5 +1,5 @@
 siteLocalStorage = window.localStorage;
-STORAGE_KEY = "cart"
+STORAGE_KEY = "tasty_step_cart"
 
 
 function LocalStorageKeyExists(storageKey) {
@@ -52,7 +52,124 @@ function GetDictValuesSum(dictionary) {
     return sum
 }
 
+function WayForPay() {
+    let currentLocation = window.location.origin;
+    $.ajax({
+        url: currentLocation + "/wayforpay/",
+        type: 'POST',
+        headers: {"X-CSRFToken": getCookie("csrftoken")},
+        dataType: "json",
+        context: document.body,
+        // data: {
+        //     "cart": "aa"
+        // name: document.getElementById("firstName").value,
+        // surname: document.getElementById("Surname").value,
+        // middle_name: document.getElementById("middleName").value,
+        // phone: document.getElementById("Phone").value,
+        // email: document.getElementById("Email").value,
+        // post: document.getElementById("PostOffice").value,
+        // },
+        data: JSON.stringify({
+            cart: localStorage.getItem(STORAGE_KEY),
+            name: document.getElementById("firstName").value,
+            surname: document.getElementById("Surname").value,
+            middle_name: document.getElementById("middleName").value,
+            phone: document.getElementById("Phone").value,
+            email: document.getElementById("Email").value,
+            post: document.getElementById("PostOffice").value
+        }),
 
+        success: function (data) {
+            // console.log(data);
+            // console.log(data["order_reference"]);
+            let payForm = document.getElementById("wayforpay-form");
 
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "orderReference";
+            input.value = data["order_reference"];
+            payForm.appendChild(input);
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "orderDate";
+            input.value = "1415379863";
+            payForm.appendChild(input);
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "amount";
+            input.value = data["amount"];
+            payForm.appendChild(input);
+
+            let len = data["product_name"].length;
+            for (let i = 0; i < len; i++) {
+                var input = document.createElement("input");
+                input.style = "display: none";
+                input.name = "productName[]";
+                input.value = data["product_name"][i];
+                payForm.appendChild(input);
+            }
+            for (let i = 0; i < len; i++) {
+                var input = document.createElement("input");
+                input.style = "display: none";
+                input.name = "productPrice[]";
+                input.value = data["product_price"][i];
+                payForm.appendChild(input);
+            }
+            for (let i = 0; i < len; i++) {
+                var input = document.createElement("input");
+                input.style = "display: none";
+                input.name = "productCount[]";
+                input.value = data["product_count"][i];
+                payForm.appendChild(input);
+            }
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "clientFirstName";
+            input.value = document.getElementById("firstName").value;
+            payForm.appendChild(input);
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "clientLastName";
+            input.value = document.getElementById("Surname").value;
+            payForm.appendChild(input);
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "clientEmail";
+            input.value = document.getElementById("Email").value;
+            payForm.appendChild(input);
+
+            var input = document.createElement("input");
+            input.style = "display: none";
+            input.name = "merchantSignature";
+            input.value = data["key"];
+            payForm.appendChild(input);
+
+            let button = document.getElementById("form-button");
+            button.click();
+        }
+    });
+}
+
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    } else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+            end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
 
 LoadSite();

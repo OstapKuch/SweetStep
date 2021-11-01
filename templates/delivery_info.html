@@ -40,32 +40,57 @@
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Прізвище</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Surname" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Побатькові</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="middleName" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер телефону</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Phone" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Електронна адреса</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Email" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер відділення Нової Пошти</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="PostOffice" placeholder="" value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
 
-                <div class="col text-center mx-auto">
-                    <button class="btn btn-primary my-3 col-xs" style="width: -webkit-fill-available; max-width: 500px;" type="submit">Оплатити</button>
+                <div class="col text-center">
+                    <form id="wayforpay-form" method="post" action="https://secure.wayforpay.com/pay" accept-charset="utf-8">
+                        <input style="display: none" name="merchantAccount" value="lvivtranstour_site">
+                        <input style="display: none" name="merchantAuthType" value="SimpleSignature">
+                        <input style="display: none" name="merchantDomainName" value="lvivtranstour.site">
+{#                        <input style="display: none"name="orderReference" value="5">#}
+{#                        <input style="display: none" name="orderDate" value="1415379863">#}
+{#                        <input style="display: none" name="amount" value="1">#}
+                        <input style="display: none" name="currency" value="UAH">
+                        <input style="display: none" name="orderTimeout" value="49000">
+{#                        <input style="display: none" name="productName[]" value="Чурчхелла">#}
+{#                        <input style="display: none" name="productName[]" value="Іриск">#}
+{#                        <input style="display: none" name="productPrice[]" value="1">#}
+{#                        <input style="display: none" name="productPrice[]" value="1">#}
+{#                        <input style="display: none" name="productCount[]" value="1">#}
+{#                        <input style="display: none" name="productCount[]" value="1">#}
+{#                        <input style="display: none" name="clientFirstName" value="Вася">#}
+{#                        <input style="display: none" name="clientLastName" value="Пупкин">#}
+{#                        <input style="display: none" name="clientAddress" value="пр. Гагарина, 12">#}
+{#                        <input style="display: none" name="clientCity" value="Днепропетровск">#}
+{#                        <input style="display: none" name="clientEmail" value="some@mail.com">#}
+                        <input style="display: none" name="defaultPaymentSystem" value="card">
+{#                        <input style="display: none" name="merchantSignature" value="e3d39f9214d1e5d7ad94a35a8682cc36">#}
+                        <button id="form-button" class="btn btn-primary my-3 col-xs" type="submit" style="display: none"></button>
+                    </form>
+                    <button class="btn btn-primary my-3 col-xs" onclick="WayForPay()"> Оплатити</button>
+
                 </div>
             </div>
             <div class="col-lg-5 p-lg-5 d-none d-sm-block">
@@ -77,4 +102,7 @@
 
 </body>
 <script type="text/javascript" src="{% static 'css/bootstrap/dist/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-3.6.0.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </html>
