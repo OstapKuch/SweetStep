@@ -24,7 +24,7 @@ function AddItemToCart(item, count) {
     itemsDict[item] = count
     localStorage.setItem(STORAGE_KEY, JSON.stringify(itemsDict));
     ShowCart(itemsDict);
-    console.log(itemsDict);
+    // console.log(itemsDict);
 
 }
 
@@ -60,15 +60,6 @@ function WayForPay() {
         headers: {"X-CSRFToken": getCookie("csrftoken")},
         dataType: "json",
         context: document.body,
-        // data: {
-        //     "cart": "aa"
-        // name: document.getElementById("firstName").value,
-        // surname: document.getElementById("Surname").value,
-        // middle_name: document.getElementById("middleName").value,
-        // phone: document.getElementById("Phone").value,
-        // email: document.getElementById("Email").value,
-        // post: document.getElementById("PostOffice").value,
-        // },
         data: JSON.stringify({
             cart: localStorage.getItem(STORAGE_KEY),
             name: document.getElementById("firstName").value,
@@ -80,8 +71,6 @@ function WayForPay() {
         }),
 
         success: function (data) {
-            // console.log(data);
-            // console.log(data["order_reference"]);
             let payForm = document.getElementById("wayforpay-form");
 
             var input = document.createElement("input");
