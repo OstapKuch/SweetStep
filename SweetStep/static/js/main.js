@@ -161,4 +161,13 @@ function getCookie(name) {
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
+function btnFormDisable() {
+    if (document.getElementsByClassName('form-control').valueOf() == null) {
+        document.getElementById('sb-btn').classList.add('disabled')
+    }
+
+}
+
+btnFormDisable()
+
 LoadSite();

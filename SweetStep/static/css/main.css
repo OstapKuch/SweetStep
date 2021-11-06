@@ -30,26 +30,33 @@ img.logo-image {
     margin-left: -0.6em;
 }
 
+img.room-img {
+    max-width: 26em;
+    max-height: 26em;
+}
+
 @media (min-width: 320px) and (max-width: 1024px) {
 
     .navbar-dark .navbar-brand {
         display: none;
     }
+
     img.logo-image {
         display: none;
         /*max-width: 7em;*/
     }
 
-    .cart-row{
+    .cart-row {
         display: contents !important;
     }
+
     /*.sm-rm {*/
     /*    display: none;*/
     /*}*/
-
     .table > :not(caption) > * > * {
         padding: 0.5rem 0.3rem !important;
     }
+
     tr {
         font-size: small !important;
     }
@@ -2288,11 +2295,11 @@ progress {
 }
 
 .form-control:focus {
-    color: #212529;
+    color: #df9379;
     background-color: #1a0c0b;;
-    border-color: #86b7fe;
+    border-color: #df9379;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.25rem rgb(187, 74, 21);
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -3114,9 +3121,9 @@ textarea.form-control-lg {
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
     color: #000;
-    background-color: #fcbdc7;
-    border-color: #fbb9c4;
-    box-shadow: 0 0 0 0.25rem rgba(213, 150, 161, 0.5);
+    background-color: #df9379;
+    border-color: #df9379;
+    box-shadow: 0 0 0 0.25rem rgb(250, 198, 186);
 }
 
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
@@ -11101,6 +11108,7 @@ textarea.form-control-lg {
 
 /*Custom elements*/
 .cart {
+    visibility: hidden;
     padding-right: 1em;
 }
 

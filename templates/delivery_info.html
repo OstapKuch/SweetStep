@@ -33,36 +33,39 @@
         <div class="row">
             <div class="col-lg-7 ">
                 <h2 class="h1 mt-3 text-center">Персональні дані</h2>
-                <div class="center-block m-auto col-xs" style="max-width: 500px;">
+                <form>
+                    <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Ім'я</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Прізвище</label>
-                    <input type="text" class="form-control" id="Surname" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Surname" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Побатькові</label>
-                    <input type="text" class="form-control" id="middleName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="middleName" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер телефону</label>
-                    <input type="text" class="form-control" id="Phone" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Phone" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Електронна адреса</label>
-                    <input type="text" class="form-control" id="Email" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="Email" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="center-block m-auto col-xs" style="max-width: 500px;">
                     <label for="firstName" class="form-label">Номер відділення Нової Пошти</label>
-                    <input type="text" class="form-control" id="PostOffice" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="PostOffice" placeholder="" value="" required>
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
+                </form>
+
 
                 <div class="col text-center">
                     <form id="wayforpay-form" method="post" action="https://secure.wayforpay.com/pay" accept-charset="utf-8">
@@ -89,7 +92,7 @@
 {#                        <input style="display: none" name="merchantSignature" value="e3d39f9214d1e5d7ad94a35a8682cc36">#}
                         <button id="form-button" class="btn btn-primary my-3 col-xs" type="submit" style="display: none"></button>
                     </form>
-                    <button class="btn btn-primary my-3 col-xs" onclick="WayForPay()"> Оплатити</button>
+                    <button id="sb-btn" class="btn btn-primary my-3 col-xs" onclick="WayForPay()"> Оплатити</button>
 
                 </div>
             </div>
