@@ -8,7 +8,7 @@
     
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <title>Sweet Step</title>
+    <title>TastyStep</title>
 </head>
 <body>
 <section class="section" style="background-color: #1a0c0b;">
@@ -19,21 +19,24 @@
                 <span class="p-lg-1 my-lg-1 fs-6">На головну</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'cart' %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1 mb-2" src="{% static 'images/icons/shopping-bag.svg' %}" alt="Shopping bag">
-                <span class="p-lg-1 my-lg-1 fs-6">В кошик</span>
-            </a>
-        </li>
     </ul>
 </section>
 <section class="section">
-    <h3>Дякуємо за покупку!</h3>
-    <p class="fs-6">Очікуйте надходження товару до відділення Нової Пошти</p>
+    <div class="px-4 text-center">
+        <div class="col-lg-4 col-md-6 mx-auto">
+            <img src="{% static 'images/taxi-online-shopping.png' %}" class="img-fluid p-3" alt="">
+        </div>
+        <h1 class="display-5 fw-bold pt-5">Дякуємо за покупку!</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Очікуйте надходження товару до відділення Нової Пошти</p>
+        </div>
+  </div>
 </section>
 </body>
 <script type="text/javascript" src="{% static 'css/bootstrap/dist/js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery-3.6.0.js' %}"></script>
-
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script>
+    STORAGE_KEY = "tasty_step_cart"
+    window.localStorage.removeItem(STORAGE_KEY);
+</script>
 </html>

@@ -3433,6 +3433,7 @@ textarea.form-control-lg {
 }
 
 @media (min-width: 1200px) {
+
     .dropdown-menu-xl-start {
         --bs-position: start;
     }
@@ -5636,6 +5637,9 @@ textarea.form-control-lg {
 }
 
 @media (max-width: 1199.98px) {
+    .text-col-center {
+        text-align: center;
+    }
     .modal-fullscreen-xl-down {
         width: 100vw;
         max-width: none;
