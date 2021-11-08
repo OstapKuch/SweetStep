@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <title>Sweet Step</title>
+    <title>TastyStep</title>
 </head>
 <body>
 <section class="section" style="background-color: #1a0c0b;">
@@ -19,7 +19,7 @@
                 <span class="p-lg-1 my-lg-1 fs-6">На головну</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="empty-cart-nav">
             <a class="nav-link active" aria-current="page" href="{% url "delivery" %}" style="color: #fff">
                 <img class="shopping-bag-icon mb-lg-1" src="{% static 'images/icons/credit-card.svg' %}"
                      alt="Shopping bag">
@@ -31,8 +31,17 @@
 <section class="section">
     <div class="section p-lg-5">
         <div class="row cart-row">
-            <div class="col">
-                <table class="table " id="cart-table">
+            <div class="col " id="empty-cart" style="display: none; text-align: center">
+                <br>
+                <br>
+                <h1 class="display-5 fw-bold pt-5">Корзина пуста!</h1>
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg"><a href="{% url "index" %}" style="color: white"> Перейти до товарів</a>
+                    </button>
+            </div>
+            <div class="col text-col-center" id="table-container">
+
+                <table class="table " id="cart-table" style="text-align: center">
                     <thead>
                     <tr class="py-lg-3">
                         <th scope="col">Товар</th>

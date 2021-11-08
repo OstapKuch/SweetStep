@@ -31,7 +31,14 @@ function LoadJSONData() {
                 context: document.body,
                 success: function (data) {
                     data_images = data;
-                    createTable();
+                    if (isEmpty(items)) {
+                        document.getElementById("table-container").style.display = "none";
+                        document.getElementById("empty-cart").style.display = "block";
+                        document.getElementById("empty-cart-nav").style.display = "none";
+                    } else {
+                        createTable();
+                    }
+
                 }
             });
         }
@@ -59,7 +66,6 @@ function createTable() {
     for (let i = 0; i < data_products.length; i++) {
         let identifier = "product_" + data_products[i]["pk"];
         if (identifier in items) {
-            // console.log(identifier, items[identifier])
             let newRow = tableRef.insertRow();
             // CreateRow(data_images[i]["pk"], newRow);
             AddImage(data_images[i]["fields"]["image"], newRow)
@@ -93,7 +99,7 @@ function AddImage(data, row) {
     let cell = row.insertCell();
     let img = new Image();
     img.src = "/media/" + data;
-    img.className = "img-fluid rounded float-start";
+    img.className = "img-fluid rounded";
     img.style = "height: 4em";
     cell.appendChild(img);
 }
@@ -167,7 +173,18 @@ function RemoveItemsFromCart(item, count) {
         delete items[item]
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    items = GetLocalStorageObject(STORAGE_KEY);
+
+    if (isEmpty(items)) {
+        document.getElementById("table-container").style.display = "none";
+        document.getElementById("empty-cart").style.display = "block";
+        document.getElementById("empty-cart-nav").style.display = "none";
+    }
     // console.log(items);
+}
+
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
 }
 
 LoadProducts();

@@ -14,9 +14,11 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+
 class ProductImage(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    is_main_image = models.IntegerField(choices=BOOLEAN_CHOICES, help_text="1 - якщо головна картинка, 0 - якщо ні")
+    is_main_image = models.IntegerField(choices=BOOLEAN_CHOICES, help_text="1 - якщо головна картинка, 0 - якщо ні",
+                                        default=1)
     image = models.ImageField(upload_to='images/')
     image_name = models.CharField(max_length=50)
 
@@ -36,3 +38,7 @@ class Order(models.Model):
     total_price = models.CharField(max_length=60)
     order_date = models.CharField(max_length=60)
     paid = models.IntegerField()
+
+
+class MainImage(models.Model):
+    image = models.ImageField(upload_to='images/')
