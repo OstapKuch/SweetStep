@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5*a#3pd2jdidtoqe0qhp5kz_!^r%1mj6_p$@l5_ird@589ah(v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['159.223.24.154', 'tastystep.pp.ua']
 
 # Application definition
 
@@ -129,9 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'truequest.mail@gmail.com'
+EMAIL_HOST_USER = 'tastystep@gmail.com'
 EMAIL_HOST_PASSWORD = '*****'
 EMAIL_USE_TLS = True
 DEFAULT_RECIPIENT = "ostapko220@gmail.com"
 # DEFAULT_RECIPIENT = "tastystep@gmail.com"
-DEFAULT_SENDER = "truequest.mail@gmail.com"
+DEFAULT_SENDER = "tastystep@gmail.com"

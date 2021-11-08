@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/icons/favicon-16x16.png' %}"/>
     <title>TastyStep</title>
 </head>
 <body>
@@ -15,7 +15,8 @@
     <ul class="nav justify-content-center">
         <li class="nav-item">
             <a class="nav-link align-middle" href="{% url "index" %}" style="color: #fff">
-                <img class="shopping-bag-icon mb-lg-1 mb-2" src="{% static 'images/icons/home.svg' %}" alt="Shopping bag">
+                <img class="shopping-bag-icon mb-lg-1 mb-2" src="{% static 'images/icons/home.svg' %}"
+                     alt="Shopping bag">
                 <span class="p-lg-1 my-lg-1 fs-6">На головну</span>
             </a>
         </li>
@@ -30,7 +31,7 @@
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Очікуйте надходження товару до відділення Нової Пошти</p>
         </div>
-  </div>
+    </div>
 </section>
 </body>
 <script type="text/javascript" src="{% static 'css/bootstrap/dist/js/bootstrap.js' %}"></script>
